@@ -2,9 +2,6 @@ package com.github.aznamier.keycloak.event.provider;
 
 
 import org.keycloak.Config.Scope;
-import org.keycloak.events.Event;
-import org.keycloak.events.admin.AdminEvent;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -12,53 +9,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class RabbitMqConfig {
 
 	public static final ObjectMapper rabbitMqObjectMapper = new ObjectMapper();
-	public static String ROUTING_KEY_PREFIX = "KK.EVENT";
 
 	private String hostUrl;
 	private Integer port;
 	private String username;
 	private String password;
 	private String vhost;
-	private Boolean useTls;
+
 	private String exchange;
-
-	public static String calculateRoutingKey(AdminEvent adminEvent) {
-		//KK.EVENT.ADMIN.<REALM>.<RESULT>.<RESOURCE_TYPE>.<OPERATION>
-		String routingKey = ROUTING_KEY_PREFIX
-				+ ".ADMIN"
-				+ "." + removeDots(adminEvent.getRealmId())
-				+ "." + (adminEvent.getError() != null ? "ERROR" : "SUCCESS")
-				+ "." + adminEvent.getResourceTypeAsString()
-				+ "." + adminEvent.getOperationType().toString()
-
-				;
-		return normalizeKey(routingKey);
-	}
-
-	public static String calculateRoutingKey(Event event) {
-		//KK.EVENT.CLIENT.<REALM>.<RESULT>.<CLIENT>.<EVENT_TYPE>
-		String routingKey = ROUTING_KEY_PREFIX
-					+ ".CLIENT"
-					+ "." + removeDots(event.getRealmId())
-					+ "." + (event.getError() != null ? "ERROR" : "SUCCESS")
-					+ "." + removeDots(event.getClientId())
-					+ "." + event.getType();
-
-		return normalizeKey(routingKey);
-	}
-
-	//Remove all characters apart a-z, A-Z, 0-9, space, underscore, eplace all spaces and hyphens with underscore
-	public static final String normalizeKey(String stringToNormalize) {
-		return stringToNormalize.replaceAll("[^\\*#a-zA-Z0-9 _.-]", "").
-				replaceAll(" ", "_");
-	}
-
-	public static final String removeDots(String stringToNormalize) {
-		if(stringToNormalize != null) {
-			stringToNormalize = stringToNormalize.replaceAll("\\.", "");
-		}
-		return stringToNormalize;
-	}
 
 	public static String writeAsJson(Object object, boolean isPretty) {
 		String messageAsJson = "unparsable";
@@ -85,7 +43,7 @@ public class RabbitMqConfig {
 		cfg.username = resolveConfigVar(config, "username", "guest");
 		cfg.password = resolveConfigVar(config, "password", "guest");
 		cfg.vhost = resolveConfigVar(config, "vhost", "/");
-		cfg.useTls = Boolean.valueOf(resolveConfigVar(config, "use_tls", "false"));
+
 		cfg.exchange = resolveConfigVar(config, "exchange", "leagueshare-exchanger");
 		return cfg;
 
@@ -107,8 +65,6 @@ public class RabbitMqConfig {
 		return value;
 
 	}
-
-
 	public String getHostUrl() {
 		return hostUrl;
 	}
@@ -139,17 +95,10 @@ public class RabbitMqConfig {
 	public void setVhost(String vhost) {
 		this.vhost = vhost;
 	}
-	public Boolean getUseTls() {
-		return useTls;
-	}
-	public void setUseTls(Boolean useTls) {
-		this.useTls = useTls;
-	}
 	public String getExchange() {
 		return exchange;
 	}
 	public void setExchange(String exchange) {
 		this.exchange = exchange;
 	}
-
 }

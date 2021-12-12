@@ -12,7 +12,7 @@ public class RabbitMqEventListenerProviderFactory implements EventListenerProvid
 
 	@Override
 	public EventListenerProvider create(KeycloakSession session) {
-		return new RabbitMqEventListenerProvider(cfg, session);
+		return new RabbitMqEventListenerProvider(cfg);
 	}
 
 	@Override
@@ -34,5 +34,4 @@ public class RabbitMqEventListenerProviderFactory implements EventListenerProvid
 	public String getId() {
 		return "keycloak-to-rabbitmq";
 	}
-
 }
