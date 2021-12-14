@@ -36,7 +36,7 @@ public class RabbitMqEventListenerProvider implements EventListenerProvider {
 
 	@Override
 	public void onEvent(Event event) {
-		if(event.getType() == EventType.LOGIN){
+		if(event.getType() == EventType.REGISTER){
 			EventClientNotificationMqMsg msg = EventClientNotificationMqMsg.create(event);
 			String routingKey = MessagingConfig.routingKey;
 			String messageString = RabbitMqConfig.writeAsJson(msg, true);
