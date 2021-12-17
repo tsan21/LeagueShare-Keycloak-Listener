@@ -13,6 +13,7 @@
     <properties>
     	<keycloak.version>13.0.0</keycloak.version>
     	<jar.finalName>${project.artifactId}-${project.version}</jar.finalName>
+        <sonar.organization>tsan21</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
 
