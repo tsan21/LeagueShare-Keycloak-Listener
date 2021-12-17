@@ -1,10 +1,10 @@
-# Basic
-.DS_Store
+*.class
 
-# IDE
-.vscode/
-.idea/
-*.iml
-
-# Project
+# Package Files #
+*.jar
+*.war
+*.ear
 target/
+.settings/
+.project
+.classpath
