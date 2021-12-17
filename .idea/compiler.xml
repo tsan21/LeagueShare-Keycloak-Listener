@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="keycloak-to-rabbit" />
+        <module name="LeagueShare-Keycloak-Listener" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="11">
       <module name="keycloak-to-rabbit" target="1.8" />
+      <module name="LeagueShare-Keycloak-Listener" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/keycloak-to-rabbit.iml" filepath="$PROJECT_DIR$/keycloak-to-rabbit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/LeagueShare-Keycloak-Listener.iml" filepath="$PROJECT_DIR$/.idea/LeagueShare-Keycloak-Listener.iml" />
     </modules>
   </component>
 </project>
