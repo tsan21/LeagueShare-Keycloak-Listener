@@ -1,0 +1,6 @@
+com\github\aznamier\keycloak\event\provider\RabbitMqConfig.class
+com\github\aznamier\keycloak\event\provider\RabbitMqEventListenerProvider.class
+com\github\aznamier\keycloak\event\provider\EventAdminNotificationMqMsg.class
+com\github\aznamier\keycloak\event\provider\EventClientNotificationMqMsg.class
+com\github\aznamier\keycloak\event\provider\RabbitMqEventListenerProviderFactory.class
+com\github\aznamier\keycloak\event\provider\MessagingConfig.class
