@@ -38,7 +38,7 @@ public class RabbitMqConfig {
 	public static RabbitMqConfig createFromScope(Scope config) {
 		RabbitMqConfig cfg = new RabbitMqConfig();
 
-		cfg.hostUrl = resolveConfigVar(config, "url", "20.93.191.202");
+		cfg.hostUrl = resolveConfigVar(config, "url", "rabbitmq");
 		cfg.port = Integer.valueOf(resolveConfigVar(config, "port", "5672"));
 		cfg.username = resolveConfigVar(config, "username", "guest");
 		cfg.password = resolveConfigVar(config, "password", "guest");
